@@ -1,0 +1,25 @@
+name: C++ Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up C++ compiler
+      uses: egor-tensin/setup-cpp@v1
+      with:
+        cpp_compiler: g++
+
+    - name: Build
+      run: g++ -o myprogram main.cpp
+
+    - name: Run
+      run: ./myprogram
